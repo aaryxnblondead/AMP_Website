@@ -1,8 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const Register: React.FC = () => {
-  const [userType, setUserType] = React.useState<'ngo' | 'volunteer' | 'donor' | 'student'>('student');
+  const [userType, setUserType] = React.useState<'ngo' | 'donor' | 'student'>('student');
+  const navigate = useNavigate();
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
@@ -26,18 +27,14 @@ export const Register: React.FC = () => {
             <div className="font-semibold text-neutral-900">Student</div>
             <div className="text-xs text-neutral-600">Scholarships, NTS, Career Guidance</div>
           </button>
-          <button
-            onClick={() => setUserType('volunteer')}
-            className={`p-4 rounded-lg border-2 transition-all ${
-              userType === 'volunteer' 
-                ? 'border-primary-700 bg-primary-50' 
-                : 'border-neutral-200 hover:border-primary-300'
-            }`}
+          <Link
+            to="/volunteer"
+            className="p-4 rounded-lg border-2 border-neutral-200 hover:border-primary-300 transition-all block text-center"
           >
             <div className="text-3xl mb-2">🤝</div>
             <div className="font-semibold text-neutral-900">Volunteer</div>
             <div className="text-xs text-neutral-600">Join our programs</div>
-          </button>
+          </Link>
           <button
             onClick={() => setUserType('ngo')}
             className={`p-4 rounded-lg border-2 transition-all ${
