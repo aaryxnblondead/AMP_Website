@@ -57,6 +57,8 @@ export class NGOService {
     state?: string;
     district?: string;
     name?: string;
+    category?: string;
+    sort?: 'relevance' | 'recent' | 'name';
     verified?: boolean;
     page?: number;
     limit?: number;
@@ -74,6 +76,10 @@ export class NGOService {
       params.push(filters.state + '%');
       where.push(`state ILIKE $${params.length}`);
     }
+    if (filters.category) {
+      params.push(filters.category);
+      where.push(`category = $${params.length}`);
+    }
     if (filters.district) {
       params.push(filters.district + '%');
       where.push(`district ILIKE $${params.length}`);
@@ -85,10 +91,14 @@ export class NGOService {
 
     const whereSql = where.length ? `WHERE ${where.join(' AND ')}` : '';
 
+    let orderBy = 'beneficiaries_reached DESC';
+    if (filters.sort === 'recent') orderBy = 'updated_at DESC';
+    if (filters.sort === 'name') orderBy = 'ngo_name ASC';
+
     const listSql = `
       SELECT * FROM ngos
       ${whereSql}
-      ORDER BY beneficiaries_reached DESC
+      ORDER BY ${orderBy}
       LIMIT $${params.length + 1} OFFSET $${params.length + 2}
     `;
     const countSql = `SELECT COUNT(*)::int as total FROM ngos ${whereSql}`;

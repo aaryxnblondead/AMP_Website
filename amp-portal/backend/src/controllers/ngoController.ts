@@ -14,13 +14,15 @@ export class NGOController {
 
   static async search(req: Request, res: Response) {
     try {
-      const { state, district, name, page, limit } = req.query as any;
+      const { state, city, district, q, name, category, page, pageSize, sort } = req.query as any;
       const result = await NGOService.searchNGOs({
         state,
-        district,
-        name,
-        page: page ? parseInt(page) : undefined,
-        limit: limit ? parseInt(limit) : undefined,
+        district: district || city,
+        name: name || q,
+        category,
+        sort,
+        page: page ? parseInt(page) : pageSize ? parseInt(pageSize) : undefined,
+        limit: pageSize ? parseInt(pageSize) : undefined,
       });
       res.json({
         success: true,

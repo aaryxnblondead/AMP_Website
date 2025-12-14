@@ -6,6 +6,9 @@ import { errorHandler } from './middleware/errorHandler';
 import authRoutes from './routes/auth';
 import ngoRoutes from './routes/ngos';
 import { env } from './config/env';
+import eventRoutes from './routes/events';
+import resourceRoutes from './routes/resources';
+import discussionRoutes from './routes/discussions';
 
 dotenv.config();
 
@@ -23,6 +26,9 @@ app.get('/api/health', (req, res) => {
 
 app.use('/api/auth', authRoutes);
 app.use('/api/ngos', ngoRoutes);
+app.use('/api/events', eventRoutes);
+app.use('/api/resources', resourceRoutes);
+app.use('/api/discussions', discussionRoutes);
 
 app.use(errorHandler);
 
