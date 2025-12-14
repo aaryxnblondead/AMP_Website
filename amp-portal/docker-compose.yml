@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: amp_portal
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: your_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: amp_portal
+      DB_USER: postgres
+      DB_PASSWORD: your_password
+      JWT_SECRET: change_me
+      JWT_EXPIRY: 7d
+      REFRESH_TOKEN_SECRET: change_me_too
+      REFRESH_TOKEN_EXPIRY: 30d
+      FRONTEND_URL: http://localhost:3000
+      MAX_FILE_SIZE: 10485760
+      UPLOAD_DIR: ./uploads
+    depends_on:
+      - postgres
+    ports:
+      - "5000:5000"
+
+volumes:
+  postgres_data:

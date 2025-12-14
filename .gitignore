@@ -1,0 +1,51 @@
+# Root Git ignore for AMP_Website
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Node/TypeScript common
+node_modules/
+dist/
+build/
+coverage/
+*.tsbuildinfo
+
+# Env files
+.env
+.env.*
+
+# Editor/IDE
+.vscode/
+.idea/
+
+# Misc caches
+.cache/
+.tmp/
+
+# Frontend artifacts
+amp-portal/frontend/.env
+amp-portal/frontend/node_modules/
+amp-portal/frontend/build/
+amp-portal/frontend/coverage/
+
+# Backend artifacts
+amp-portal/backend/.env
+amp-portal/backend/node_modules/
+amp-portal/backend/dist/
+amp-portal/backend/coverage/
+
+# Uploaded assets (if any)
+uploads/
+
+# Ignore project docs added at repo root
+AMP-Build-Guide.md
+Implementation-Roadmap.md
+Quick-Reference-Guide.md
