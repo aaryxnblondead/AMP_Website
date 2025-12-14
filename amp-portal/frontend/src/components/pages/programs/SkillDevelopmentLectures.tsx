@@ -1,36 +1,34 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { PageLayout } from '../../common/PageLayout';
+import { Card, StatCard } from '../../common/Card';
+import { SectionHeader } from '../../common/SectionHeader';
+import { CallToAction } from '../../common/CallToAction';
 
 export const SkillDevelopmentLectures: React.FC = () => {
+  const stats = [
+    { value: '80+', label: 'Locations Nationwide' },
+    { value: '1+ Lakh', label: 'Students Annually' },
+    { value: '500+', label: 'Expert Lecturers' },
+  ];
+
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div className="mb-8">
-        <nav className="text-sm text-neutral-600 mb-4">
-          <Link to="/" className="hover:text-primary-700">Home</Link> / 
-          <Link to="/programs" className="hover:text-primary-700"> Programs</Link> / 
-          <span className="text-neutral-900"> Skill Development Lectures</span>
-        </nav>
-        <h1 className="text-4xl font-display font-bold text-primary-700 mb-4">Skill Development Lectures (SDL)</h1>
-        <p className="text-lg text-neutral-700">Enhancing academic skills and knowledge across India</p>
-      </div>
-
+    <PageLayout
+      breadcrumbs={[
+        { label: 'Home', path: '/' },
+        { label: 'Programs', path: '/programs' },
+        { label: 'Skill Development Lectures' },
+      ]}
+      title="Skill Development Lectures (SDL)"
+      subtitle="Enhancing academic skills and knowledge across India"
+    >
       <div className="grid md:grid-cols-3 gap-8 mb-12">
-        <div className="bg-white rounded-lg shadow-card p-6 text-center">
-          <div className="text-4xl font-bold text-primary-700 mb-2">80+</div>
-          <div className="text-neutral-600">Locations Nationwide</div>
-        </div>
-        <div className="bg-white rounded-lg shadow-card p-6 text-center">
-          <div className="text-4xl font-bold text-primary-700 mb-2">1+ Lakh</div>
-          <div className="text-neutral-600">Students Annually</div>
-        </div>
-        <div className="bg-white rounded-lg shadow-card p-6 text-center">
-          <div className="text-4xl font-bold text-primary-700 mb-2">500+</div>
-          <div className="text-neutral-600">Expert Lecturers</div>
-        </div>
+        {stats.map((stat, index) => (
+          <StatCard key={index} {...stat} />
+        ))}
       </div>
 
-      <div className="bg-white rounded-lg shadow-card p-8 mb-8">
-        <h2 className="text-2xl font-display font-bold text-neutral-900 mb-4">About SDL Program</h2>
+      <Card className="mb-8">
+        <SectionHeader title="About SDL Program" />
         <p className="text-neutral-700 mb-4">
           Skill Development Lectures (SDL) are AMP's flagship educational initiative conducted at over 80 locations across India. 
           The program reaches more than 1 lakh students annually, providing high-quality academic instruction and skill development 
@@ -41,9 +39,9 @@ export const SkillDevelopmentLectures: React.FC = () => {
           and developing essential skills for academic and professional success. Expert teachers and professionals conduct 
           these lectures, ensuring students receive the best possible guidance.
         </p>
-      </div>
+      </Card>
 
-      <div className="bg-white rounded-lg shadow-card p-8 mb-8">
+      <Card className="mb-8">
         <h2 className="text-2xl font-display font-bold text-neutral-900 mb-6">Subject Areas Covered</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           <div className="bg-cream-100 p-4 rounded-lg">
@@ -71,10 +69,10 @@ export const SkillDevelopmentLectures: React.FC = () => {
             <p className="text-sm text-neutral-700">Basic computing, digital literacy</p>
           </div>
         </div>
-      </div>
+      </Card>
 
-      <div className="bg-white rounded-lg shadow-card p-8 mb-8">
-        <h2 className="text-2xl font-display font-bold text-neutral-900 mb-6">Program Features</h2>
+      <Card className="mb-8">
+        <SectionHeader title="Program Features" />
         <div className="grid md:grid-cols-2 gap-6">
           <div className="flex gap-4">
             <div className="text-3xl">✅</div>
@@ -119,10 +117,10 @@ export const SkillDevelopmentLectures: React.FC = () => {
             </div>
           </div>
         </div>
-      </div>
+      </Card>
 
-      <div className="bg-white rounded-lg shadow-card p-8 mb-8">
-        <h2 className="text-2xl font-display font-bold text-neutral-900 mb-4">Who Can Attend?</h2>
+      <Card className="mb-8">
+        <SectionHeader title="Program Features" />
         <div className="grid md:grid-cols-3 gap-4">
           <div className="border border-primary-200 p-4 rounded-lg">
             <h3 className="font-semibold text-primary-700 mb-2">School Students</h3>
@@ -137,20 +135,16 @@ export const SkillDevelopmentLectures: React.FC = () => {
             <p className="text-sm text-neutral-700">All competitive exams</p>
           </div>
         </div>
-      </div>
+      </Card>
 
-      <div className="bg-primary-700 text-white rounded-lg p-8 text-center">
-        <h2 className="text-2xl font-display font-bold mb-4">Join SDL Program Today</h2>
-        <p className="mb-6">Find SDL lectures in your city and start your journey to academic excellence</p>
-        <div className="flex justify-center gap-4">
-          <button className="bg-white text-primary-700 px-6 py-3 rounded-lg font-semibold hover:bg-neutral-100">
-            Find Nearest Location
-          </button>
-          <button className="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-primary-700">
-            View Schedule
-          </button>
-        </div>
-      </div>
-    </div>
+      <CallToAction
+        title="Join SDL Program Today"
+        description="Find SDL lectures in your city and start your journey to academic excellence"
+        buttons={[
+          { label: 'Find Nearest Location', variant: 'outline' },
+          { label: 'View Schedule', variant: 'outline' },
+        ]}
+      />
+    </PageLayout>
   );
 };

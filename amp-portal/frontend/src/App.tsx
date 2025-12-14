@@ -106,6 +106,7 @@ function App() {
           
           {/* NGO Features */}
           <Route path="/search-ngos" element={<SearchNGOs />} />
+          <Route path="/ngos/register" element={<Register />} />
           <Route path="/ngos/:id" element={<NGODetail />} />
           
           {/* Discussions */}

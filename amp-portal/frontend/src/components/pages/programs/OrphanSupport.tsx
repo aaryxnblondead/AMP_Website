@@ -1,36 +1,33 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { PageLayout } from '../../common/PageLayout';
+import { Card, StatCard } from '../../common/Card';
+import { SectionHeader } from '../../common/SectionHeader';
 
 export const OrphanSupport: React.FC = () => {
+  const stats = [
+    { value: '607', label: 'Orphans Currently Supported' },
+    { value: '500+', label: 'Total Beneficiaries' },
+    { value: '100%', label: 'Education Coverage' },
+  ];
+
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div className="mb-8">
-        <nav className="text-sm text-neutral-600 mb-4">
-          <Link to="/" className="hover:text-primary-700">Home</Link> / 
-          <Link to="/programs" className="hover:text-primary-700"> Programs</Link> / 
-          <span className="text-neutral-900"> Orphan Education Support</span>
-        </nav>
-        <h1 className="text-4xl font-display font-bold text-primary-700 mb-4">Orphan Education Support</h1>
-        <p className="text-lg text-neutral-700">Ensuring every child has access to quality education</p>
-      </div>
-
+    <PageLayout
+      breadcrumbs={[
+        { label: 'Home', path: '/' },
+        { label: 'Programs', path: '/programs' },
+        { label: 'Orphan Education Support' },
+      ]}
+      title="Orphan Education Support"
+      subtitle="Ensuring every child has access to quality education"
+    >
       <div className="grid md:grid-cols-3 gap-8 mb-12">
-        <div className="bg-white rounded-lg shadow-card p-6 text-center">
-          <div className="text-4xl font-bold text-primary-700 mb-2">607</div>
-          <div className="text-neutral-600">Orphans Currently Supported</div>
-        </div>
-        <div className="bg-white rounded-lg shadow-card p-6 text-center">
-          <div className="text-4xl font-bold text-primary-700 mb-2">500+</div>
-          <div className="text-neutral-600">Total Beneficiaries</div>
-        </div>
-        <div className="bg-white rounded-lg shadow-card p-6 text-center">
-          <div className="text-4xl font-bold text-primary-700 mb-2">100%</div>
-          <div className="text-neutral-600">Education Coverage</div>
-        </div>
+        {stats.map((stat, index) => (
+          <StatCard key={index} {...stat} />
+        ))}
       </div>
 
-      <div className="bg-white rounded-lg shadow-card p-8 mb-8">
-        <h2 className="text-2xl font-display font-bold text-neutral-900 mb-4">About the Program</h2>
+      <Card className="mb-8">
+        <SectionHeader title="About the Program" />
         <p className="text-neutral-700 mb-4">
           AMP's Orphan Education Support Program is dedicated to ensuring that children who have lost one or both parents 
           don't lose their right to quality education. We currently support 607 orphans across India, providing them with 
@@ -41,10 +38,10 @@ export const OrphanSupport: React.FC = () => {
           We believe that every child deserves an equal opportunity to learn, grow, and achieve their potential, regardless of 
           their circumstances.
         </p>
-      </div>
+      </Card>
 
-      <div className="bg-white rounded-lg shadow-card p-8 mb-8">
-        <h2 className="text-2xl font-display font-bold text-neutral-900 mb-6">What We Provide</h2>
+      <Card className="mb-8">
+        <SectionHeader title="What We Provide" />
         <div className="grid md:grid-cols-2 gap-6">
           <div className="flex gap-4">
             <div className="text-3xl">📚</div>
@@ -89,10 +86,10 @@ export const OrphanSupport: React.FC = () => {
             </div>
           </div>
         </div>
-      </div>
+      </Card>
 
-      <div className="bg-white rounded-lg shadow-card p-8 mb-8">
-        <h2 className="text-2xl font-display font-bold text-neutral-900 mb-6">Eligibility Criteria</h2>
+      <Card className="mb-8">
+        <SectionHeader title="Eligibility Criteria" />
         <div className="space-y-4">
           <div className="border-l-4 border-primary-700 pl-4">
             <h3 className="font-semibold text-neutral-900 mb-1">Orphan Status</h3>
@@ -111,10 +108,10 @@ export const OrphanSupport: React.FC = () => {
             <p className="text-neutral-700">Valid death certificate(s) and guardian information</p>
           </div>
         </div>
-      </div>
+      </Card>
 
-      <div className="bg-white rounded-lg shadow-card p-8 mb-8">
-        <h2 className="text-2xl font-display font-bold text-neutral-900 mb-6">Education Levels Covered</h2>
+      <Card className="mb-8">
+        <SectionHeader title="Education Levels Covered" />
         <div className="grid md:grid-cols-4 gap-4">
           <div className="bg-cream-100 p-4 rounded-lg text-center">
             <div className="text-3xl mb-2">🏫</div>
@@ -137,10 +134,10 @@ export const OrphanSupport: React.FC = () => {
             <p className="text-sm text-neutral-700">Classes 11-12</p>
           </div>
         </div>
-      </div>
+      </Card>
 
-      <div className="bg-white rounded-lg shadow-card p-8 mb-8">
-        <h2 className="text-2xl font-display font-bold text-neutral-900 mb-6">How to Apply</h2>
+      <Card className="mb-8">
+        <SectionHeader title="How to Apply" />
         <div className="grid md:grid-cols-3 gap-4">
           <div className="text-center">
             <div className="w-12 h-12 bg-primary-700 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-3">1</div>
@@ -158,7 +155,7 @@ export const OrphanSupport: React.FC = () => {
             <p className="text-sm text-neutral-700">Approved children receive continuous educational support</p>
           </div>
         </div>
-      </div>
+      </Card>
 
       <div className="bg-cream-100 rounded-lg p-8 mb-8">
         <h2 className="text-2xl font-display font-bold text-neutral-900 mb-4">Sponsor an Orphan's Education</h2>
@@ -194,6 +191,6 @@ export const OrphanSupport: React.FC = () => {
           </button>
         </div>
       </div>
-    </div>
+    </PageLayout>
   );
 };

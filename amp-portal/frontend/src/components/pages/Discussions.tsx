@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from '../common/Button';
 
 interface Discussion {
   id: number;
@@ -132,12 +133,12 @@ export const Discussions: React.FC = () => {
             <h1 className="text-4xl font-display font-bold text-primary-700 mb-2">Discussion Corner</h1>
             <p className="text-lg text-neutral-700">Connect, share, and learn from the AMP community</p>
           </div>
-          <button 
+          <Button 
             onClick={() => setShowNewTopicForm(true)}
-            className="bg-primary-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-800 whitespace-nowrap"
+            className="whitespace-nowrap"
           >
             + New Topic
-          </button>
+          </Button>
         </div>
       </div>
 

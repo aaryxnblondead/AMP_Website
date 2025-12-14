@@ -1,40 +1,68 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { PageLayout } from '../../common/PageLayout';
+import { Card, StatCard, FeatureCard } from '../../common/Card';
+import { SectionHeader } from '../../common/SectionHeader';
+import { CallToAction } from '../../common/CallToAction';
 
 export const JobFairs: React.FC = () => {
+  const stats = [
+    { value: '25+', label: 'Job Fairs Conducted' },
+    { value: '250+', label: 'Job Drives Completed' },
+    { value: '15,000+', label: 'Candidates Placed' },
+    { value: '500+', label: 'Partner Companies' },
+  ];
+
+  const features = [
+    {
+      icon: '🏢',
+      title: 'Multiple Companies',
+      description: 'Meet 50+ companies in a single day',
+    },
+    {
+      icon: '💼',
+      title: 'Various Sectors',
+      description: 'IT, Manufacturing, Retail, Healthcare, BPO, and more',
+    },
+    {
+      icon: '🎯',
+      title: 'On-the-Spot Interviews',
+      description: 'Direct interaction with hiring managers',
+    },
+    {
+      icon: '📝',
+      title: 'Resume Support',
+      description: 'Free resume review and improvement tips',
+    },
+    {
+      icon: '🆓',
+      title: 'Free Entry',
+      description: 'No registration or entry fees for candidates',
+    },
+    {
+      icon: '🎓',
+      title: 'Career Counseling',
+      description: 'Expert guidance on career options',
+    },
+  ];
+
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div className="mb-8">
-        <nav className="text-sm text-neutral-600 mb-4">
-          <Link to="/" className="hover:text-primary-700">Home</Link> / 
-          <Link to="/programs" className="hover:text-primary-700"> Programs</Link> / 
-          <span className="text-neutral-900"> Job Fairs & Job Drives</span>
-        </nav>
-        <h1 className="text-4xl font-display font-bold text-primary-700 mb-4">Job Fairs & Job Drives</h1>
-        <p className="text-lg text-neutral-700">Connecting job seekers with employment opportunities</p>
-      </div>
-
+    <PageLayout
+      breadcrumbs={[
+        { label: 'Home', path: '/' },
+        { label: 'Programs', path: '/programs' },
+        { label: 'Job Fairs & Job Drives' },
+      ]}
+      title="Job Fairs & Job Drives"
+      subtitle="Connecting job seekers with employment opportunities"
+    >
       <div className="grid md:grid-cols-4 gap-8 mb-12">
-        <div className="bg-white rounded-lg shadow-card p-6 text-center">
-          <div className="text-4xl font-bold text-primary-700 mb-2">25+</div>
-          <div className="text-neutral-600">Job Fairs Conducted</div>
-        </div>
-        <div className="bg-white rounded-lg shadow-card p-6 text-center">
-          <div className="text-4xl font-bold text-primary-700 mb-2">250+</div>
-          <div className="text-neutral-600">Job Drives Completed</div>
-        </div>
-        <div className="bg-white rounded-lg shadow-card p-6 text-center">
-          <div className="text-4xl font-bold text-primary-700 mb-2">15,000+</div>
-          <div className="text-neutral-600">Candidates Placed</div>
-        </div>
-        <div className="bg-white rounded-lg shadow-card p-6 text-center">
-          <div className="text-4xl font-bold text-primary-700 mb-2">500+</div>
-          <div className="text-neutral-600">Partner Companies</div>
-        </div>
+        {stats.map((stat, index) => (
+          <StatCard key={index} {...stat} />
+        ))}
       </div>
 
-      <div className="bg-white rounded-lg shadow-card p-8 mb-8">
-        <h2 className="text-2xl font-display font-bold text-neutral-900 mb-4">About Job Fairs & Drives</h2>
+      <Card className="mb-8">
+        <SectionHeader title="About Job Fairs & Drives" />
         <p className="text-neutral-700 mb-4">
           AMP's Job Fairs and Job Drives are flagship employment programs that have successfully connected over 15,000 candidates 
           with quality employment opportunities. We organize large-scale job fairs across India, bringing together job seekers and 
@@ -45,7 +73,7 @@ export const JobFairs: React.FC = () => {
           companies across various sectors. Our job fairs are completely free for candidates and provide direct access to 
           hiring managers and on-the-spot interviews.
         </p>
-      </div>
+      </Card>
 
       <div className="bg-primary-50 border-l-4 border-primary-700 p-6 mb-8">
         <h3 className="font-display font-bold text-primary-700 text-xl mb-2">📍 Recent Event</h3>
@@ -53,56 +81,17 @@ export const JobFairs: React.FC = () => {
         <p className="text-neutral-600">Successfully conducted with participation from 50+ companies and 2000+ job seekers</p>
       </div>
 
-      <div className="bg-white rounded-lg shadow-card p-8 mb-8">
-        <h2 className="text-2xl font-display font-bold text-neutral-900 mb-6">Job Fair Features</h2>
+      <Card className="mb-8">
+        <SectionHeader title="Job Fair Features" />
         <div className="grid md:grid-cols-2 gap-6">
-          <div className="flex gap-4">
-            <div className="text-3xl">🏢</div>
-            <div>
-              <h3 className="font-semibold text-neutral-900 mb-2">Multiple Companies</h3>
-              <p className="text-neutral-700">Meet 50+ companies in a single day</p>
-            </div>
-          </div>
-          <div className="flex gap-4">
-            <div className="text-3xl">💼</div>
-            <div>
-              <h3 className="font-semibold text-neutral-900 mb-2">Various Sectors</h3>
-              <p className="text-neutral-700">IT, Manufacturing, Retail, Healthcare, BPO, and more</p>
-            </div>
-          </div>
-          <div className="flex gap-4">
-            <div className="text-3xl">🎯</div>
-            <div>
-              <h3 className="font-semibold text-neutral-900 mb-2">On-the-Spot Interviews</h3>
-              <p className="text-neutral-700">Direct interaction with hiring managers</p>
-            </div>
-          </div>
-          <div className="flex gap-4">
-            <div className="text-3xl">📝</div>
-            <div>
-              <h3 className="font-semibold text-neutral-900 mb-2">Resume Support</h3>
-              <p className="text-neutral-700">Free resume review and improvement tips</p>
-            </div>
-          </div>
-          <div className="flex gap-4">
-            <div className="text-3xl">🆓</div>
-            <div>
-              <h3 className="font-semibold text-neutral-900 mb-2">Free Entry</h3>
-              <p className="text-neutral-700">No registration or entry fees for candidates</p>
-            </div>
-          </div>
-          <div className="flex gap-4">
-            <div className="text-3xl">🎓</div>
-            <div>
-              <h3 className="font-semibold text-neutral-900 mb-2">Career Counseling</h3>
-              <p className="text-neutral-700">Expert guidance on career options</p>
-            </div>
-          </div>
+          {features.map((feature, index) => (
+            <FeatureCard key={index} {...feature} />
+          ))}
         </div>
-      </div>
+      </Card>
 
-      <div className="bg-white rounded-lg shadow-card p-8 mb-8">
-        <h2 className="text-2xl font-display font-bold text-neutral-900 mb-6">Job Profiles Available</h2>
+      <Card className="mb-8">
+        <SectionHeader title="Job Profiles Available" />
         <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4">
           {['Software Developer', 'Sales Executive', 'Customer Support', 'Data Entry Operator', 'Accountant', 'HR Executive', 'Marketing Manager', 'Production Supervisor', 'Quality Analyst', 'Nurse', 'Teacher', 'Business Development'].map((job) => (
             <div key={job} className="bg-cream-100 p-3 rounded-lg text-center">
@@ -110,10 +99,10 @@ export const JobFairs: React.FC = () => {
             </div>
           ))}
         </div>
-      </div>
+      </Card>
 
-      <div className="bg-white rounded-lg shadow-card p-8 mb-8">
-        <h2 className="text-2xl font-display font-bold text-neutral-900 mb-6">Upcoming Job Fairs</h2>
+      <Card className="mb-8">
+        <SectionHeader title="Upcoming Job Fairs" />
         <div className="space-y-4">
           <div className="border border-neutral-200 p-6 rounded-lg">
             <div className="flex justify-between items-start mb-3">
@@ -163,10 +152,10 @@ export const JobFairs: React.FC = () => {
             </button>
           </div>
         </div>
-      </div>
+      </Card>
 
-      <div className="bg-white rounded-lg shadow-card p-8 mb-8">
-        <h2 className="text-2xl font-display font-bold text-neutral-900 mb-6">For Employers</h2>
+      <Card className="mb-8">
+        <SectionHeader title="For Employers" />
         <p className="text-neutral-700 mb-4">
           Partner with AMP to access a large pool of talented and motivated candidates. Our job fairs attract thousands 
           of job seekers across all education levels and experience ranges.
@@ -188,20 +177,16 @@ export const JobFairs: React.FC = () => {
         <button className="bg-primary-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-800">
           Partner with Us
         </button>
-      </div>
+      </Card>
 
-      <div className="bg-primary-700 text-white rounded-lg p-8 text-center">
-        <h2 className="text-2xl font-display font-bold mb-4">Looking for a Job?</h2>
-        <p className="mb-6">Register for our upcoming job fairs and take the next step in your career</p>
-        <div className="flex justify-center gap-4">
-          <button className="bg-white text-primary-700 px-6 py-3 rounded-lg font-semibold hover:bg-neutral-100">
-            View All Job Fairs
-          </button>
-          <button className="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-primary-700">
-            Upload Your Resume
-          </button>
-        </div>
-      </div>
-    </div>
+      <CallToAction
+        title="Looking for a Job?"
+        description="Register for our upcoming job fairs and take the next step in your career"
+        buttons={[
+          { label: 'View All Job Fairs', variant: 'outline' },
+          { label: 'Upload Your Resume', variant: 'outline' },
+        ]}
+      />
+    </PageLayout>
   );
 };
