@@ -11,6 +11,8 @@ import { Discussions } from './components/pages/Discussions';
 import { About } from './components/pages/About';
 import { VisionMission } from './components/pages/about/VisionMission';
 import { Achievements } from './components/pages/about/Achievements';
+import { Projects } from './components/pages/about/Projects';
+import { NGOConnect } from './components/pages/about/NGOConnect';
 import { ProgramsHub } from './components/pages/ProgramsHub';
 import { EventsHub } from './components/pages/EventsHub';
 import { ResourcesHub } from './components/pages/ResourcesHub';
@@ -29,6 +31,8 @@ function App() {
           {/* About */}
           <Route path="/about" element={<About />} />
           <Route path="/about/vision-mission" element={<VisionMission />} />
+          <Route path="/about/projects" element={<Projects />} />
+          <Route path="/ngo_connect" element={<NGOConnect />} />
           <Route path="/about/achievements" element={<Achievements />} />
           {/* Programs */}
           <Route path="/programs" element={<ProgramsHub />} />
