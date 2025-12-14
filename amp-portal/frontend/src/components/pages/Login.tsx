@@ -19,9 +19,9 @@ export const Login: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-neutral-100">
-      <div className="w-full max-w-md bg-white shadow rounded p-6">
-        <h1 className="text-2xl font-semibold text-neutral-900 mb-4">Login</h1>
+    <div className="min-h-screen flex items-center justify-center bg-neutral-100 px-4">
+      <div className="w-full max-w-md bg-white shadow-lg rounded-lg p-6 sm:p-8">
+        <h1 className="text-xl sm:text-2xl font-semibold text-neutral-900 mb-4 sm:mb-6">Login</h1>
         <form onSubmit={onSubmit} className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-neutral-700 mb-1">Email</label>

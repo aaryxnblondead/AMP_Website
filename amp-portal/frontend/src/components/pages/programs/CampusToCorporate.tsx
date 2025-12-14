@@ -3,19 +3,19 @@ import { Link } from 'react-router-dom';
 
 export const CampusToCorporate: React.FC = () => {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div className="mb-8">
-        <nav className="text-sm text-neutral-600 mb-4">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+      <div className="mb-6 sm:mb-8">
+        <nav className="text-xs sm:text-sm text-neutral-600 mb-4">
           <Link to="/" className="hover:text-primary-700">Home</Link> / 
           <Link to="/programs" className="hover:text-primary-700"> Programs</Link> / 
           <span className="text-neutral-900"> Campus to Corporate</span>
         </nav>
-        <h1 className="text-4xl font-display font-bold text-primary-700 mb-4">Campus to Corporate Program</h1>
-        <p className="text-lg text-neutral-700">Bridging the gap between education and employment</p>
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-primary-700 mb-3 sm:mb-4">Campus to Corporate Program</h1>
+        <p className="text-sm sm:text-base lg:text-lg text-neutral-700">Bridging the gap between education and employment</p>
       </div>
 
-      <div className="bg-white rounded-lg shadow-card p-8 mb-8">
-        <h2 className="text-2xl font-display font-bold text-neutral-900 mb-4">About the Program</h2>
+      <div className="bg-white rounded-lg shadow-card p-4 sm:p-6 lg:p-8 mb-6 sm:mb-8">
+        <h2 className="text-xl sm:text-2xl font-display font-bold text-neutral-900 mb-4">About the Program</h2>
         <p className="text-neutral-700 mb-4">
           The Campus to Corporate program is designed to prepare students for successful transitions from academic life to 
           professional careers. We partner with colleges and universities to provide students with the skills, knowledge, 
@@ -27,9 +27,9 @@ export const CampusToCorporate: React.FC = () => {
         </p>
       </div>
 
-      <div className="bg-white rounded-lg shadow-card p-8 mb-8">
-        <h2 className="text-2xl font-display font-bold text-neutral-900 mb-6">Program Components</h2>
-        <div className="grid md:grid-cols-2 gap-6">
+      <div className="bg-white rounded-lg shadow-card p-4 sm:p-6 lg:p-8 mb-6 sm:mb-8">
+        <h2 className="text-xl sm:text-2xl font-display font-bold text-neutral-900 mb-4 sm:mb-6">Program Components</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
           <div className="border-l-4 border-primary-700 pl-4">
             <h3 className="font-semibold text-lg text-neutral-900 mb-2">Campus Recruitment Drives</h3>
             <p className="text-neutral-700">On-campus placement drives connecting students with leading companies</p>
@@ -57,9 +57,9 @@ export const CampusToCorporate: React.FC = () => {
         </div>
       </div>
 
-      <div className="bg-white rounded-lg shadow-card p-8 mb-8">
-        <h2 className="text-2xl font-display font-bold text-neutral-900 mb-6">Skills Training Areas</h2>
-        <div className="grid md:grid-cols-3 gap-4">
+      <div className="bg-white rounded-lg shadow-card p-4 sm:p-6 lg:p-8 mb-6 sm:mb-8">
+        <h2 className="text-xl sm:text-2xl font-display font-bold text-neutral-900 mb-4 sm:mb-6">Skills Training Areas</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           <div className="bg-cream-100 p-4 rounded-lg">
             <h3 className="font-semibold text-primary-700 mb-2">💬 Communication Skills</h3>
             <ul className="text-sm text-neutral-700 space-y-1">

@@ -3,18 +3,18 @@ import { Link } from 'react-router-dom';
 
 export const SelfEmployment: React.FC = () => {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div className="mb-8">
-        <nav className="text-sm text-neutral-600 mb-4">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+      <div className="mb-6 sm:mb-8">
+        <nav className="text-xs sm:text-sm text-neutral-600 mb-4">
           <Link to="/" className="hover:text-primary-700">Home</Link> / 
           <Link to="/programs" className="hover:text-primary-700"> Programs</Link> / 
           <span className="text-neutral-900"> Self-Employment Schemes</span>
         </nav>
-        <h1 className="text-4xl font-display font-bold text-primary-700 mb-4">Self-Employment Schemes</h1>
-        <p className="text-lg text-neutral-700">Empowering entrepreneurs to build their own businesses</p>
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-primary-700 mb-3 sm:mb-4">Self-Employment Schemes</h1>
+        <p className="text-sm sm:text-base lg:text-lg text-neutral-700">Empowering entrepreneurs to build their own businesses</p>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-8 mb-12">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-8 sm:mb-12">
         <div className="bg-white rounded-lg shadow-card p-6 text-center">
           <div className="text-4xl font-bold text-primary-700 mb-2">200+</div>
           <div className="text-neutral-600">Beneficiaries (5 Years)</div>

@@ -33,38 +33,38 @@ export const Webinars: React.FC = () => {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div className="mb-8">
-        <nav className="text-sm text-neutral-600 mb-4">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+      <div className="mb-6 sm:mb-8">
+        <nav className="text-xs sm:text-sm text-neutral-600 mb-4">
           <Link to="/" className="hover:text-primary-700">Home</Link> / 
           <Link to="/events" className="hover:text-primary-700"> Events</Link> / 
           <span className="text-neutral-900"> Webinars</span>
         </nav>
-        <h1 className="text-4xl font-display font-bold text-primary-700 mb-4">AMP Webinars & Online Sessions</h1>
-        <p className="text-lg text-neutral-700">Learn from experts, anytime, anywhere</p>
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-primary-700 mb-3 sm:mb-4">AMP Webinars & Online Sessions</h1>
+        <p className="text-sm sm:text-base lg:text-lg text-neutral-700">Learn from experts, anytime, anywhere</p>
       </div>
 
-      <div className="bg-white rounded-lg shadow-card p-8 mb-8">
-        <h2 className="text-2xl font-display font-bold text-neutral-900 mb-6">Upcoming Webinars</h2>
-        <div className="space-y-6">
+      <div className="bg-white rounded-lg shadow-card p-4 sm:p-6 lg:p-8 mb-6 sm:mb-8">
+        <h2 className="text-xl sm:text-2xl font-display font-bold text-neutral-900 mb-4 sm:mb-6">Upcoming Webinars</h2>
+        <div className="space-y-4 sm:space-y-6">
           {upcomingWebinars.map((webinar, index) => (
-            <div key={index} className="border border-neutral-200 p-6 rounded-lg hover:shadow-md transition-shadow">
-              <div className="flex justify-between items-start mb-4">
+            <div key={index} className="border border-neutral-200 p-4 sm:p-6 rounded-lg hover:shadow-md transition-shadow">
+              <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start gap-4 mb-4">
                 <div className="flex-1">
-                  <h3 className="text-xl font-semibold text-primary-700 mb-2">{webinar.title}</h3>
-                  <div className="text-sm text-neutral-600 space-y-1 mb-3">
+                  <h3 className="text-lg sm:text-xl font-semibold text-primary-700 mb-2">{webinar.title}</h3>
+                  <div className="text-xs sm:text-sm text-neutral-600 space-y-1 mb-3">
                     <p>📅 {webinar.date} | ⏰ {webinar.time}</p>
                     <p>👨‍🏫 {webinar.speaker}</p>
                   </div>
                   <div className="flex flex-wrap gap-2 mb-3">
                     {webinar.topics.map((topic, i) => (
-                      <span key={i} className="px-3 py-1 bg-cream-100 text-neutral-700 text-sm rounded-full">
+                      <span key={i} className="px-2 sm:px-3 py-1 bg-cream-100 text-neutral-700 text-xs sm:text-sm rounded-full">
                         {topic}
                       </span>
                     ))}
                   </div>
                 </div>
-                <button className="bg-primary-700 text-white px-6 py-2 rounded-lg font-semibold hover:bg-primary-800 whitespace-nowrap ml-4">
+                <button className="bg-primary-700 text-white px-4 sm:px-6 py-2 rounded-lg font-semibold hover:bg-primary-800 transition-colors whitespace-nowrap w-full lg:w-auto">
                   Register Free
                 </button>
               </div>
@@ -73,17 +73,17 @@ export const Webinars: React.FC = () => {
         </div>
       </div>
 
-      <div className="bg-white rounded-lg shadow-card p-8 mb-8">
-        <h2 className="text-2xl font-display font-bold text-neutral-900 mb-6">Past Webinars - Watch Recordings</h2>
-        <div className="grid md:grid-cols-3 gap-6">
+      <div className="bg-white rounded-lg shadow-card p-4 sm:p-6 lg:p-8 mb-6 sm:mb-8">
+        <h2 className="text-xl sm:text-2xl font-display font-bold text-neutral-900 mb-4 sm:mb-6">Past Webinars - Watch Recordings</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {pastWebinars.map((webinar, index) => (
-            <div key={index} className="border border-neutral-200 p-4 rounded-lg">
-              <div className="h-40 bg-cream-100 rounded-lg mb-4 flex items-center justify-center text-4xl">
+            <div key={index} className="border border-neutral-200 p-4 rounded-lg hover:shadow-md transition-shadow">
+              <div className="h-32 sm:h-40 bg-cream-100 rounded-lg mb-4 flex items-center justify-center text-3xl sm:text-4xl">
                 🎥
               </div>
-              <h3 className="font-semibold text-neutral-900 mb-2">{webinar.title}</h3>
-              <p className="text-sm text-neutral-600 mb-3">{webinar.date} | {webinar.views.toLocaleString()} views</p>
-              <button className="w-full border-2 border-primary-700 text-primary-700 px-4 py-2 rounded-lg font-semibold hover:bg-primary-50">
+              <h3 className="font-semibold text-sm sm:text-base text-neutral-900 mb-2 line-clamp-2">{webinar.title}</h3>
+              <p className="text-xs sm:text-sm text-neutral-600 mb-3">{webinar.date} | {webinar.views.toLocaleString()} views</p>
+              <button className="w-full border-2 border-primary-700 text-primary-700 px-4 py-2 rounded-lg font-semibold hover:bg-primary-50 transition-colors text-sm sm:text-base">
                 Watch Now
               </button>
             </div>
@@ -91,9 +91,9 @@ export const Webinars: React.FC = () => {
         </div>
       </div>
 
-      <div className="bg-white rounded-lg shadow-card p-8 mb-8">
-        <h2 className="text-2xl font-display font-bold text-neutral-900 mb-6">Webinar Categories</h2>
-        <div className="grid md:grid-cols-4 gap-4">
+      <div className="bg-white rounded-lg shadow-card p-4 sm:p-6 lg:p-8 mb-6 sm:mb-8">
+        <h2 className="text-xl sm:text-2xl font-display font-bold text-neutral-900 mb-4 sm:mb-6">Webinar Categories</h2>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
           <div className="bg-cream-100 p-4 rounded-lg text-center">
             <div className="text-2xl mb-2">🎓</div>
             <h3 className="font-semibold text-neutral-900 mb-1">Education</h3>

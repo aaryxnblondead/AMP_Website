@@ -14,14 +14,14 @@ const events: EventCardProps[] = [
 ];
 
 const EventCard: React.FC<EventCardProps> = ({ title, date, location, imageUrl }) => (
-  <div className="rounded-xl overflow-hidden bg-white shadow-card">
+  <div className="rounded-xl overflow-hidden bg-white shadow-card hover:shadow-lg transition-shadow">
     <div className="relative">
-      <img src={imageUrl} alt={title} className="w-full h-48 object-cover" />
-      <span className="absolute left-3 top-3 bg-primary-700 text-white text-xs px-2 py-1 rounded-full">{date}</span>
+      <img src={imageUrl} alt={title} className="w-full h-40 sm:h-48 object-cover" />
+      <span className="absolute left-2 sm:left-3 top-2 sm:top-3 bg-primary-700 text-white text-xs px-2 py-1 rounded-full">{date}</span>
     </div>
-    <div className="p-4">
-      <h4 className="font-semibold text-neutral-900">{title}</h4>
-      <div className="mt-2 text-sm text-neutral-600">📍 {location}</div>
+    <div className="p-3 sm:p-4">
+      <h4 className="font-semibold text-sm sm:text-base text-neutral-900 line-clamp-2">{title}</h4>
+      <div className="mt-2 text-xs sm:text-sm text-neutral-600">📍 {location}</div>
     </div>
   </div>
 );
@@ -29,14 +29,14 @@ const EventCard: React.FC<EventCardProps> = ({ title, date, location, imageUrl }
 export const UpcomingEvents: React.FC = () => {
   return (
     <div>
-      <h3 className="text-xl font-bold text-primary-700 mb-4">Upcoming Events</h3>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <h3 className="text-lg sm:text-xl font-bold text-primary-700 mb-4">Upcoming Events</h3>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {events.map((e) => (
           <EventCard key={e.title} {...e} />
         ))}
       </div>
-      <div className="mt-4 text-center">
-        <a className="inline-block px-4 py-2 rounded-full bg-neutral-100 hover:bg-neutral-200" href="/events">View All Events</a>
+      <div className="mt-4 sm:mt-6 text-center">
+        <a className="inline-block px-4 py-2 rounded-full bg-neutral-100 hover:bg-neutral-200 transition-colors text-sm sm:text-base" href="/events">View All Events</a>
       </div>
     </div>
   );

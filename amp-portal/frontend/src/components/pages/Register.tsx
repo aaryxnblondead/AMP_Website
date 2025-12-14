@@ -5,15 +5,15 @@ export const Register: React.FC = () => {
   const [userType, setUserType] = React.useState<'ngo' | 'volunteer' | 'donor' | 'student'>('student');
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div className="mb-8 text-center">
-        <h1 className="text-4xl font-display font-bold text-primary-700 mb-4">Create Your Account</h1>
-        <p className="text-lg text-neutral-700">Join AMP to access programs, events, and resources</p>
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+      <div className="mb-6 sm:mb-8 text-center">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-primary-700 mb-3 sm:mb-4">Create Your Account</h1>
+        <p className="text-sm sm:text-base lg:text-lg text-neutral-700">Join AMP to access programs, events, and resources</p>
       </div>
 
-      <div className="bg-white rounded-lg shadow-card p-8 mb-8">
-        <h2 className="text-xl font-display font-bold text-neutral-900 mb-6">Select Account Type</h2>
-        <div className="grid md:grid-cols-4 gap-4 mb-8">
+      <div className="bg-white rounded-lg shadow-card p-4 sm:p-6 lg:p-8 mb-6 sm:mb-8">
+        <h2 className="text-lg sm:text-xl font-display font-bold text-neutral-900 mb-4 sm:mb-6">Select Account Type</h2>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6 sm:mb-8">
           <button
             onClick={() => setUserType('student')}
             className={`p-4 rounded-lg border-2 transition-all ${

@@ -40,26 +40,26 @@ export const HeroCarousel: React.FC = () => {
   return (
     <div className="bg-white rounded-xl shadow-card overflow-hidden">
       <div className="relative">
-        <img src={current.imageUrl} alt={current.title} className="w-full h-96 object-cover" />
+        <img src={current.imageUrl} alt={current.title} className="w-full h-64 sm:h-80 md:h-96 object-cover" />
         <button
           aria-label="Previous"
-          className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 px-3 py-1 rounded"
+          className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white px-2 sm:px-3 py-1 rounded text-sm transition-colors"
           onClick={() => setIndex((i) => (i - 1 + slides.length) % slides.length)}
         >
           Back
         </button>
       </div>
-      <div className="p-4">
+      <div className="p-4 sm:p-6">
         {current.category && (
-          <span className="inline-block text-xs text-neutral-600">{current.category}</span>
+          <span className="inline-block text-xs sm:text-sm text-neutral-600">{current.category}</span>
         )}
-        <h3 className="mt-1 text-lg font-semibold text-neutral-900">{current.title}</h3>
-        <div className="mt-2 flex items-center gap-3 text-sm text-neutral-600">
+        <h3 className="mt-1 text-base sm:text-lg md:text-xl font-semibold text-neutral-900">{current.title}</h3>
+        <div className="mt-2 flex items-center gap-2 sm:gap-3 text-xs sm:text-sm text-neutral-600 flex-wrap">
           <span>By {current.author}</span>
           <span>•</span>
           <span>{current.readTime}</span>
         </div>
-        <p className="mt-3 text-neutral-700">
+        <p className="mt-3 text-sm sm:text-base text-neutral-700">
           In the heart of rural India, a quiet revolution is taking place...
         </p>
       </div>

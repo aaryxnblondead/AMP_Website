@@ -3,23 +3,23 @@ import { Link } from 'react-router-dom';
 
 export const NGOConferences: React.FC = () => {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div className="mb-8">
-        <nav className="text-sm text-neutral-600 mb-4">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+      <div className="mb-6 sm:mb-8">
+        <nav className="text-xs sm:text-sm text-neutral-600 mb-4">
           <Link to="/" className="hover:text-primary-700">Home</Link> / 
           <Link to="/events" className="hover:text-primary-700"> Events</Link> / 
           <span className="text-neutral-900"> NGO Conferences</span>
         </nav>
-        <h1 className="text-4xl font-display font-bold text-primary-700 mb-4">AMP NGO Conferences 2025</h1>
-        <p className="text-lg text-neutral-700">Bringing NGOs together for collaboration and growth</p>
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-primary-700 mb-3 sm:mb-4">AMP NGO Conferences 2025</h1>
+        <p className="text-sm sm:text-base lg:text-lg text-neutral-700">Bringing NGOs together for collaboration and growth</p>
       </div>
 
-      <div className="bg-gradient-to-r from-primary-700 to-primary-900 text-white rounded-lg p-8 mb-8">
+      <div className="bg-gradient-to-r from-primary-700 to-primary-900 text-white rounded-lg p-6 sm:p-8 mb-6 sm:mb-8">
         <div className="text-center">
-          <h2 className="text-3xl font-display font-bold mb-4">Save the Date!</h2>
-          <div className="text-5xl font-bold mb-2">15-16 November 2025</div>
-          <p className="text-xl mb-4">📍 Lucknow, Uttar Pradesh</p>
-          <button className="bg-white text-primary-700 px-8 py-3 rounded-lg font-semibold hover:bg-neutral-100">
+          <h2 className="text-2xl sm:text-3xl font-display font-bold mb-3 sm:mb-4">Save the Date!</h2>
+          <div className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-2">15-16 November 2025</div>
+          <p className="text-base sm:text-lg lg:text-xl mb-4">📍 Lucknow, Uttar Pradesh</p>
+          <button className="bg-white text-primary-700 px-6 sm:px-8 py-2 sm:py-3 rounded-lg font-semibold hover:bg-neutral-100 transition-colors w-full sm:w-auto">
             Register Now
           </button>
         </div>
@@ -38,9 +38,9 @@ export const NGOConferences: React.FC = () => {
         </p>
       </div>
 
-      <div className="bg-white rounded-lg shadow-card p-8 mb-8">
-        <h2 className="text-2xl font-display font-bold text-neutral-900 mb-6">Conference Highlights</h2>
-        <div className="grid md:grid-cols-2 gap-6">
+      <div className="bg-white rounded-lg shadow-card p-4 sm:p-6 lg:p-8 mb-6 sm:mb-8">
+        <h2 className="text-xl sm:text-2xl font-display font-bold text-neutral-900 mb-4 sm:mb-6">Conference Highlights</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
           <div className="flex gap-4">
             <div className="text-3xl">🎤</div>
             <div>

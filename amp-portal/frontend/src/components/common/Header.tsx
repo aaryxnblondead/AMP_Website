@@ -3,47 +3,85 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../../store/authStore';
 
 const TopBar: React.FC = () => (
-  <div className="bg-white text-neutral-800">
-    <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-      {/* Left: AMP logo + wordmark */}
-      <div className="flex items-center gap-3">
-        {/* Placeholder logo circle; replace with AMP logo asset when available */}
-        <div className="w-10 h-10 rounded-full bg-primary-700 flex items-center justify-center text-white font-bold">A</div>
-        <div className="leading-tight">
-          <div className="font-display font-black text-neutral-900 text-sm tracking-wide">ASSOCIATION OF MUSLIM PROFESSIONALS</div>
-          <div className="text-xs text-primary-700">STRIVING FOR PEACE AND PROGRESS</div>
+  <div className="bg-white text-neutral-800 border-b border-neutral-200">
+    <div className="max-w-7xl mx-auto px-4 py-3">
+      {/* Desktop Layout */}
+      <div className="hidden lg:flex items-center justify-between">
+        {/* Left: AMP logo + wordmark */}
+        <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+          <div className="w-10 h-10 rounded-full bg-primary-700 flex items-center justify-center text-white font-bold flex-shrink-0">A</div>
+          <div className="leading-tight">
+            <div className="font-display font-black text-neutral-900 text-sm tracking-wide">ASSOCIATION OF MUSLIM PROFESSIONALS</div>
+            <div className="text-xs text-primary-700">STRIVING FOR PEACE AND PROGRESS</div>
+          </div>
+        </Link>
+
+        {/* Right: utility links with icons */}
+        <div className="flex items-center gap-4 xl:gap-6 text-sm flex-wrap">
+          <Link to="/volunteer" className="flex items-center gap-2 hover:text-primary-700 transition-colors">
+            <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary-100 text-primary-700">🤝</span>
+            <span className="font-display italic whitespace-nowrap">Become a Volunteer</span>
+          </Link>
+          <a href="tel:+917300116660" className="flex items-center gap-2 hover:text-primary-700 transition-colors">
+            <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-neutral-100">📞</span>
+            <span className="font-semibold text-neutral-900 whitespace-nowrap">+91-7300116660</span>
+          </a>
+          <a href="mailto:info@ampindia.org" className="flex items-center gap-2 hover:text-primary-700 transition-colors">
+            <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-neutral-100">✉️</span>
+            <span className="text-neutral-900 underline whitespace-nowrap">info@ampindia.org</span>
+          </a>
+          <Link to="/contact" className="flex items-center gap-2 hover:text-primary-700 transition-colors">
+            <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-neutral-100">📍</span>
+            <span className="whitespace-nowrap">Contact Us</span>
+          </Link>
+          <Link to="/login" className="flex items-center gap-2 hover:text-primary-700 transition-colors">
+            <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-neutral-100">🔑</span>
+            <span className="whitespace-nowrap">Login</span>
+          </Link>
+          <Link to="/register" className="px-3 py-1 rounded-full border border-neutral-300 hover:bg-neutral-100 transition-colors whitespace-nowrap">Register</Link>
+          {/* Social icons */}
+          <div className="hidden xl:flex items-center gap-3 text-neutral-700">
+            <a href="https://twitter.com/ampindia" target="_blank" rel="noopener noreferrer" className="hover:text-primary-700 transition-colors" aria-label="Twitter">🐦</a>
+            <a href="https://facebook.com/ampindia" target="_blank" rel="noopener noreferrer" className="hover:text-primary-700 transition-colors" aria-label="Facebook">📘</a>
+            <a href="https://linkedin.com/company/ampindia" target="_blank" rel="noopener noreferrer" className="hover:text-primary-700 transition-colors" aria-label="LinkedIn">📌</a>
+            <a href="https://instagram.com/ampindia" target="_blank" rel="noopener noreferrer" className="hover:text-primary-700 transition-colors" aria-label="Instagram">📸</a>
+          </div>
         </div>
       </div>
 
-      {/* Right: utility links with icons */}
-      <div className="flex items-center gap-6 text-sm">
-        <div className="flex items-center gap-2">
-          <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary-100 text-primary-700">🤝</span>
-          <span className="font-display italic">Become a Volunteer</span>
+      {/* Mobile & Tablet Layout */}
+      <div className="lg:hidden">
+        <div className="flex items-center justify-between mb-3">
+          <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+            <div className="w-10 h-10 rounded-full bg-primary-700 flex items-center justify-center text-white font-bold flex-shrink-0">A</div>
+            <div className="leading-tight">
+              <div className="font-display font-black text-neutral-900 text-xs sm:text-sm">ASSOCIATION OF MUSLIM PROFESSIONALS</div>
+              <div className="text-[10px] sm:text-xs text-primary-700">STRIVING FOR PEACE AND PROGRESS</div>
+            </div>
+          </Link>
+          <div className="flex items-center gap-2">
+            <Link to="/login" className="px-3 py-1 text-xs rounded border border-primary-700 text-primary-700 hover:bg-primary-50 transition-colors">Login</Link>
+            <Link to="/register" className="px-3 py-1 text-xs rounded bg-primary-700 text-white hover:bg-primary-800 transition-colors">Register</Link>
+          </div>
         </div>
-        <div className="flex items-center gap-2">
-          <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-neutral-100">📞</span>
-          <span className="font-semibold text-neutral-900">+91-7300116660</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-neutral-100">✉️</span>
-          <a href="mailto:info@ampindia.org" className="text-neutral-900 underline">info@ampindia.org</a>
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-neutral-100">📍</span>
-          <Link to="/contact" className="hover:text-primary-700">Contact Us</Link>
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-neutral-100">🔑</span>
-          <Link to="/login" className="hover:text-primary-700">Login</Link>
-        </div>
-        <Link to="/register" className="px-3 py-1 rounded-full border border-neutral-300 hover:bg-neutral-100">Register</Link>
-        {/* Social icons placeholder */}
-        <div className="hidden md:flex items-center gap-3 text-neutral-700">
-          <span>🐦</span>
-          <span>📘</span>
-          <span>📌</span>
-          <span>📸</span>
+        
+        <div className="flex items-center justify-between gap-2 flex-wrap text-xs">
+          <a href="tel:+917300116660" className="flex items-center gap-1 hover:text-primary-700 transition-colors">
+            <span>📞</span>
+            <span className="font-semibold">+91-7300116660</span>
+          </a>
+          <a href="mailto:info@ampindia.org" className="flex items-center gap-1 hover:text-primary-700 transition-colors">
+            <span>✉️</span>
+            <span className="underline">info@ampindia.org</span>
+          </a>
+          <Link to="/contact" className="flex items-center gap-1 hover:text-primary-700 transition-colors">
+            <span>📍</span>
+            <span>Contact</span>
+          </Link>
+          <Link to="/volunteer" className="flex items-center gap-1 hover:text-primary-700 transition-colors">
+            <span>🤝</span>
+            <span>Volunteer</span>
+          </Link>
         </div>
       </div>
     </div>

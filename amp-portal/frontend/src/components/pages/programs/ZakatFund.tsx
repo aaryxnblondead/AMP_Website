@@ -3,18 +3,18 @@ import { Link } from 'react-router-dom';
 
 export const ZakatFund: React.FC = () => {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div className="mb-8">
-        <nav className="text-sm text-neutral-600 mb-4">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+      <div className="mb-6 sm:mb-8">
+        <nav className="text-xs sm:text-sm text-neutral-600 mb-4">
           <Link to="/" className="hover:text-primary-700">Home</Link> / 
           <Link to="/programs" className="hover:text-primary-700"> Programs</Link> / 
           <span className="text-neutral-900"> AMP Zakat Fund (AZF)</span>
         </nav>
-        <h1 className="text-4xl font-display font-bold text-primary-700 mb-4">AMP Zakat Fund (AZF)</h1>
-        <p className="text-lg text-neutral-700">Transforming lives through Shariah-compliant charitable giving</p>
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-primary-700 mb-3 sm:mb-4">AMP Zakat Fund (AZF)</h1>
+        <p className="text-sm sm:text-base lg:text-lg text-neutral-700">Transforming lives through Shariah-compliant charitable giving</p>
       </div>
 
-      <div className="bg-primary-50 border-l-4 border-primary-700 p-6 mb-8">
+      <div className="bg-primary-50 border-l-4 border-primary-700 p-4 sm:p-6 mb-6 sm:mb-8">
         <h3 className="font-display font-bold text-primary-700 text-xl mb-2">About Zakat</h3>
         <p className="text-neutral-700">
           Zakat is one of the Five Pillars of Islam and represents mandatory charitable giving for those who meet specific 
@@ -22,22 +22,22 @@ export const ZakatFund: React.FC = () => {
         </p>
       </div>
 
-      <div className="grid md:grid-cols-4 gap-8 mb-12">
-        <div className="bg-white rounded-lg shadow-card p-6 text-center">
-          <div className="text-4xl font-bold text-primary-700 mb-2">2013</div>
-          <div className="text-neutral-600">Program Started</div>
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mb-8 sm:mb-12">
+        <div className="bg-white rounded-lg shadow-card p-4 sm:p-6 text-center">
+          <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary-700 mb-2">2013</div>
+          <div className="text-xs sm:text-sm lg:text-base text-neutral-600">Program Started</div>
         </div>
-        <div className="bg-white rounded-lg shadow-card p-6 text-center">
-          <div className="text-4xl font-bold text-primary-700 mb-2">10,000+</div>
-          <div className="text-neutral-600">Beneficiaries Reached</div>
+        <div className="bg-white rounded-lg shadow-card p-4 sm:p-6 text-center">
+          <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary-700 mb-2">10,000+</div>
+          <div className="text-xs sm:text-sm lg:text-base text-neutral-600">Beneficiaries Reached</div>
         </div>
-        <div className="bg-white rounded-lg shadow-card p-6 text-center">
-          <div className="text-4xl font-bold text-primary-700 mb-2">₹5+ Cr</div>
-          <div className="text-neutral-600">Zakat Distributed</div>
+        <div className="bg-white rounded-lg shadow-card p-4 sm:p-6 text-center">
+          <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary-700 mb-2">₹5+ Cr</div>
+          <div className="text-xs sm:text-sm lg:text-base text-neutral-600">Zakat Distributed</div>
         </div>
-        <div className="bg-white rounded-lg shadow-card p-6 text-center">
-          <div className="text-4xl font-bold text-primary-700 mb-2">100%</div>
-          <div className="text-neutral-600">Shariah Compliant</div>
+        <div className="bg-white rounded-lg shadow-card p-4 sm:p-6 text-center">
+          <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary-700 mb-2">100%</div>
+          <div className="text-xs sm:text-sm lg:text-base text-neutral-600">Shariah Compliant</div>
         </div>
       </div>
 

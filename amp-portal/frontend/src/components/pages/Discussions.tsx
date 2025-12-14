@@ -126,16 +126,16 @@ export const Discussions: React.FC = () => {
   });
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div className="mb-8">
-        <div className="flex justify-between items-start mb-4">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+      <div className="mb-6 sm:mb-8">
+        <div className="flex flex-col sm:flex-row justify-between items-start gap-4 mb-4">
           <div>
-            <h1 className="text-4xl font-display font-bold text-primary-700 mb-2">Discussion Corner</h1>
-            <p className="text-lg text-neutral-700">Connect, share, and learn from the AMP community</p>
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-primary-700 mb-2">Discussion Corner</h1>
+            <p className="text-sm sm:text-base lg:text-lg text-neutral-700">Connect, share, and learn from the AMP community</p>
           </div>
           <Button 
             onClick={() => setShowNewTopicForm(true)}
-            className="whitespace-nowrap"
+            className="whitespace-nowrap w-full sm:w-auto"
           >
             + New Topic
           </Button>
@@ -145,12 +145,12 @@ export const Discussions: React.FC = () => {
       {/* New Topic Form Modal */}
       {showNewTopicForm && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-lg p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-            <div className="flex justify-between items-center mb-6">
-              <h2 className="text-2xl font-display font-bold text-neutral-900">Start New Discussion</h2>
+          <div className="bg-white rounded-lg p-4 sm:p-6 lg:p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="flex justify-between items-center mb-4 sm:mb-6">
+              <h2 className="text-xl sm:text-2xl font-display font-bold text-neutral-900">Start New Discussion</h2>
               <button 
                 onClick={() => setShowNewTopicForm(false)}
-                className="text-neutral-500 hover:text-neutral-700 text-2xl"
+                className="text-neutral-500 hover:text-neutral-700 text-2xl flex-shrink-0 ml-2"
               >
                 ×
               </button>
@@ -184,17 +184,17 @@ export const Discussions: React.FC = () => {
                   placeholder="Describe your topic in detail..."
                 />
               </div>
-              <div className="flex gap-4">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <button
                   type="submit"
-                  className="flex-1 bg-primary-700 text-white py-3 rounded-lg font-semibold hover:bg-primary-800"
+                  className="flex-1 bg-primary-700 text-white py-2 sm:py-3 rounded-lg font-semibold hover:bg-primary-800 transition-colors"
                 >
                   Post Topic
                 </button>
                 <button
                   type="button"
                   onClick={() => setShowNewTopicForm(false)}
-                  className="flex-1 border-2 border-neutral-300 text-neutral-700 py-3 rounded-lg font-semibold hover:bg-neutral-50"
+                  className="flex-1 border-2 border-neutral-300 text-neutral-700 py-2 sm:py-3 rounded-lg font-semibold hover:bg-neutral-50 transition-colors"
                 >
                   Cancel
                 </button>
@@ -205,40 +205,40 @@ export const Discussions: React.FC = () => {
       )}
 
       {/* Categories */}
-      <div className="bg-white rounded-lg shadow-card p-6 mb-8">
-        <h2 className="text-xl font-display font-bold text-neutral-900 mb-4">Categories</h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-3">
+      <div className="bg-white rounded-lg shadow-card p-4 sm:p-6 mb-6 sm:mb-8">
+        <h2 className="text-lg sm:text-xl font-display font-bold text-neutral-900 mb-4">Categories</h2>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-2 sm:gap-3">
           {categories.map((category) => (
             <button
               key={category.id}
               onClick={() => setSelectedCategory(category.id)}
-              className={`p-4 rounded-lg text-center transition-all ${
+              className={`p-3 sm:p-4 rounded-lg text-center transition-all ${
                 selectedCategory === category.id
                   ? 'bg-primary-700 text-white'
                   : 'bg-cream-100 text-neutral-800 hover:bg-cream-200'
               }`}
             >
-              <div className="text-2xl mb-1">{category.icon}</div>
-              <div className="text-sm font-semibold">{category.name}</div>
-              <div className="text-xs mt-1 opacity-75">{category.count} topics</div>
+              <div className="text-xl sm:text-2xl mb-1">{category.icon}</div>
+              <div className="text-xs sm:text-sm font-semibold line-clamp-2">{category.name}</div>
+              <div className="text-[10px] sm:text-xs mt-1 opacity-75">{category.count} topics</div>
             </button>
           ))}
         </div>
       </div>
 
       {/* Search and Filter */}
-      <div className="bg-white rounded-lg shadow-card p-6 mb-8">
-        <div className="flex flex-col md:flex-row gap-4">
+      <div className="bg-white rounded-lg shadow-card p-4 sm:p-6 mb-6 sm:mb-8">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
           <div className="flex-1">
             <input
               type="text"
               placeholder="Search discussions..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-700"
+              className="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-700 text-sm sm:text-base"
             />
           </div>
-          <select className="px-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-700">
+          <select className="px-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-700 text-sm sm:text-base">
             <option value="recent">Most Recent</option>
             <option value="popular">Most Popular</option>
             <option value="replies">Most Replied</option>

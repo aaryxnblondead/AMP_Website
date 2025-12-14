@@ -38,13 +38,13 @@ export const Footer: React.FC = () => (
           <p className="text-neutral-300 text-sm">+91 7300116660</p>
         </div>
       </div>
-      <div className="mt-12 border-t border-neutral-800 pt-6 text-neutral-400 text-xs flex justify-between">
-        <div className="space-x-4">
-          <a href="#">Terms of Use</a>
-          <a href="#">Privacy Policy</a>
-          <a href="#">Cookie Policy</a>
+      <div className="mt-12 border-t border-neutral-800 pt-6 text-neutral-400 text-xs flex flex-col sm:flex-row justify-between gap-4">
+        <div className="flex flex-col sm:flex-row gap-2 sm:space-x-4">
+          <a href="/terms" className="hover:text-white transition-colors">Terms of Use</a>
+          <a href="/privacy" className="hover:text-white transition-colors">Privacy Policy</a>
+          <a href="/cookies" className="hover:text-white transition-colors">Cookie Policy</a>
         </div>
-        <p>© AMP 2025</p>
+        <p className="sm:text-right">© AMP 2025</p>
       </div>
     </div>
   </footer>
