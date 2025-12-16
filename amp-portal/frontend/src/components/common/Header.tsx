@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../../store/authStore';
+import { CONTACT_INFO, SOCIAL_MEDIA } from '../../config/constants';
 
 const TopBar: React.FC = () => (
   <div className="bg-white text-neutral-800 border-b border-neutral-200">
@@ -22,29 +23,24 @@ const TopBar: React.FC = () => (
             <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary-100 text-primary-700">🤝</span>
             <span className="font-display italic whitespace-nowrap">Become a Volunteer</span>
           </Link>
-          <a href="tel:+917300116660" className="flex items-center gap-2 hover:text-primary-700 transition-colors">
+          <a href={`tel:${CONTACT_INFO.phone.replace(/[^0-9+]/g, '')}`} className="flex items-center gap-2 hover:text-primary-700 transition-colors">
             <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-neutral-100">📞</span>
-            <span className="font-semibold text-neutral-900 whitespace-nowrap">+91-7300116660</span>
+            <span className="font-semibold text-neutral-900 whitespace-nowrap">{CONTACT_INFO.phone}</span>
           </a>
-          <a href="mailto:info@ampindia.org" className="flex items-center gap-2 hover:text-primary-700 transition-colors">
+          <a href={`mailto:${CONTACT_INFO.email}`} className="flex items-center gap-2 hover:text-primary-700 transition-colors">
             <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-neutral-100">✉️</span>
-            <span className="text-neutral-900 underline whitespace-nowrap">info@ampindia.org</span>
+            <span className="text-neutral-900 underline whitespace-nowrap">{CONTACT_INFO.email}</span>
           </a>
           <Link to="/contact" className="flex items-center gap-2 hover:text-primary-700 transition-colors">
             <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-neutral-100">📍</span>
             <span className="whitespace-nowrap">Contact Us</span>
           </Link>
-          <Link to="/login" className="flex items-center gap-2 hover:text-primary-700 transition-colors">
-            <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-neutral-100">🔑</span>
-            <span className="whitespace-nowrap">Login</span>
-          </Link>
-          <Link to="/register" className="px-3 py-1 rounded-full border border-neutral-300 hover:bg-neutral-100 transition-colors whitespace-nowrap">Register</Link>
           {/* Social icons */}
           <div className="hidden xl:flex items-center gap-3 text-neutral-700">
-            <a href="https://twitter.com/ampindia" target="_blank" rel="noopener noreferrer" className="hover:text-primary-700 transition-colors" aria-label="Twitter">🐦</a>
-            <a href="https://facebook.com/ampindia" target="_blank" rel="noopener noreferrer" className="hover:text-primary-700 transition-colors" aria-label="Facebook">📘</a>
-            <a href="https://linkedin.com/company/ampindia" target="_blank" rel="noopener noreferrer" className="hover:text-primary-700 transition-colors" aria-label="LinkedIn">📌</a>
-            <a href="https://instagram.com/ampindia" target="_blank" rel="noopener noreferrer" className="hover:text-primary-700 transition-colors" aria-label="Instagram">📸</a>
+            <a href={SOCIAL_MEDIA.twitter} target="_blank" rel="noopener noreferrer" className="hover:text-primary-700 transition-colors" aria-label="Twitter">🐦</a>
+            <a href={SOCIAL_MEDIA.facebook} target="_blank" rel="noopener noreferrer" className="hover:text-primary-700 transition-colors" aria-label="Facebook">📘</a>
+            <a href={SOCIAL_MEDIA.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-primary-700 transition-colors" aria-label="LinkedIn">📌</a>
+            <a href={SOCIAL_MEDIA.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-primary-700 transition-colors" aria-label="Instagram">📸</a>
           </div>
         </div>
       </div>
@@ -59,20 +55,16 @@ const TopBar: React.FC = () => (
               <div className="text-[10px] sm:text-xs text-primary-700">STRIVING FOR PEACE AND PROGRESS</div>
             </div>
           </Link>
-          <div className="flex items-center gap-2">
-            <Link to="/login" className="px-3 py-1 text-xs rounded border border-primary-700 text-primary-700 hover:bg-primary-50 transition-colors">Login</Link>
-            <Link to="/register" className="px-3 py-1 text-xs rounded bg-primary-700 text-white hover:bg-primary-800 transition-colors">Register</Link>
-          </div>
         </div>
         
         <div className="flex items-center justify-between gap-2 flex-wrap text-xs">
-          <a href="tel:+917300116660" className="flex items-center gap-1 hover:text-primary-700 transition-colors">
+          <a href={`tel:${CONTACT_INFO.phone.replace(/[^0-9+]/g, '')}`} className="flex items-center gap-1 hover:text-primary-700 transition-colors">
             <span>📞</span>
-            <span className="font-semibold">+91-7300116660</span>
+            <span className="font-semibold">{CONTACT_INFO.phone}</span>
           </a>
-          <a href="mailto:info@ampindia.org" className="flex items-center gap-1 hover:text-primary-700 transition-colors">
+          <a href={`mailto:${CONTACT_INFO.email}`} className="flex items-center gap-1 hover:text-primary-700 transition-colors">
             <span>✉️</span>
-            <span className="underline">info@ampindia.org</span>
+            <span className="underline">{CONTACT_INFO.email}</span>
           </a>
           <Link to="/contact" className="flex items-center gap-1 hover:text-primary-700 transition-colors">
             <span>📍</span>
@@ -227,14 +219,30 @@ export const Header: React.FC = () => {
         {/* Mobile nav */}
         {mobileMenuOpen && (
           <nav className="md:hidden text-white px-4 pb-3 space-y-1">
-            <Link to="/" className="block px-3 py-2 rounded hover:bg-primary-800">Home</Link>
-            <Link to="/about" className="block px-3 py-2 rounded hover:bg-primary-800">About Us</Link>
-            <Link to="/ngo-corner" className="block px-3 py-2 rounded hover:bg-primary-800">NGO Corner</Link>
-            <Link to="/search-ngos" className="block px-3 py-2 rounded hover:bg-primary-800">Search NGOs</Link>
-            <Link to="/events" className="block px-3 py-2 rounded hover:bg-primary-800">Events</Link>
-            <Link to="/resources" className="block px-3 py-2 rounded hover:bg-primary-800">Resource Center</Link>
-            <Link to="/discussions" className="block px-3 py-2 rounded hover:bg-primary-800">Discussion Corner</Link>
-            <Link to="/donate" className="block px-3 py-2 rounded bg-neutral-900 text-white mt-2">❤ DONATE NOW</Link>
+            <Link to="/" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded hover:bg-primary-800">Home</Link>
+            <Link to="/about" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded hover:bg-primary-800">About Us</Link>
+            <Link to="/ngo-corner" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded hover:bg-primary-800">NGO Corner</Link>
+            <Link to="/search-ngos" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded hover:bg-primary-800">Search NGOs</Link>
+            <Link to="/events" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded hover:bg-primary-800">Events</Link>
+            <Link to="/resources" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded hover:bg-primary-800">Resource Center</Link>
+            <Link to="/discussions" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded hover:bg-primary-800">Discussion Corner</Link>
+            <Link to="/donate" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded bg-neutral-900 text-white mt-2">❤ DONATE NOW</Link>
+            {user ? (
+              <>
+                <div className="border-t border-white/20 mt-2 pt-2">
+                  <div className="px-3 py-2 text-white/90">{user.full_name}</div>
+                  <Link to="/dashboard" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded bg-primary-800 hover:bg-primary-900">Dashboard</Link>
+                  <button onClick={() => { logout(); setMobileMenuOpen(false); }} className="w-full text-left px-3 py-2 rounded bg-white text-primary-700 hover:bg-neutral-100 mt-1">Logout</button>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="border-t border-white/20 mt-2 pt-2">
+                  <Link to="/login" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded border border-white hover:bg-primary-800">Login</Link>
+                  <Link to="/register" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded bg-white text-primary-700 hover:bg-neutral-100 mt-1">Register</Link>
+                </div>
+              </>
+            )}
           </nav>
         )}
       </div>

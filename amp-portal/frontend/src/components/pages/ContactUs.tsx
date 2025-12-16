@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { CONTACT_INFO } from '../../config/constants';
 
 export const ContactUs: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +10,8 @@ export const ContactUs: React.FC = () => {
     message: ''
   });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
@@ -17,15 +20,38 @@ export const ContactUs: React.FC = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Add API call to send form data
-    console.log('Form submitted:', formData);
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
-    }, 3000);
+    setLoading(true);
+    setError(null);
+    
+    try {
+      // Store in localStorage as backup until API is ready
+      const contacts = JSON.parse(localStorage.getItem('contact_submissions') || '[]');
+      contacts.push({
+        ...formData,
+        submittedAt: new Date().toISOString()
+      });
+      localStorage.setItem('contact_submissions', JSON.stringify(contacts));
+      
+      // TODO: Uncomment when API is ready
+      // const response = await fetch('/api/contact', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify(formData)
+      // });
+      // if (!response.ok) throw new Error('Failed to send message');
+      
+      setSubmitted(true);
+      setTimeout(() => {
+        setSubmitted(false);
+        setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+      }, 3000);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to send message. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -52,14 +78,14 @@ export const ContactUs: React.FC = () => {
                 <span className="text-2xl flex-shrink-0">✉️</span>
                 <div>
                   <div className="font-semibold text-neutral-900 mb-1">Email</div>
-                  <a href="mailto:info@ampindia.org" className="text-primary-700 hover:underline">info@ampindia.org</a>
+                  <a href={`mailto:${CONTACT_INFO.email}`} className="text-primary-700 hover:underline">{CONTACT_INFO.email}</a>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <span className="text-2xl flex-shrink-0">📞</span>
                 <div>
                   <div className="font-semibold text-neutral-900 mb-1">Phone</div>
-                  <a href="tel:+917303116060" className="text-primary-700 hover:underline">+91 7303116060</a>
+                  <a href={`tel:${CONTACT_INFO.phone.replace(/[^0-9+]/g, '')}`} className="text-primary-700 hover:underline">{CONTACT_INFO.phone}</a>
                 </div>
               </div>
             </div>
@@ -84,6 +110,13 @@ export const ContactUs: React.FC = () => {
               <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
                 <p className="text-green-700 font-semibold">✓ Message sent successfully!</p>
                 <p className="text-sm text-green-600 mt-1">We'll get back to you within 24-48 hours.</p>
+              </div>
+            )}
+
+            {error && (
+              <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+                <p className="text-red-700 font-semibold">✗ Error</p>
+                <p className="text-sm text-red-600 mt-1">{error}</p>
               </div>
             )}
 
@@ -175,9 +208,10 @@ export const ContactUs: React.FC = () => {
               <div>
                 <button
                   type="submit"
-                  className="w-full sm:w-auto px-8 py-3 bg-primary-700 text-white font-semibold rounded-lg hover:bg-primary-800 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2"
+                  disabled={loading}
+                  className="w-full sm:w-auto px-8 py-3 bg-primary-700 text-white font-semibold rounded-lg hover:bg-primary-800 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Send Message
+                  {loading ? 'Sending...' : 'Send Message'}
                 </button>
               </div>
             </form>

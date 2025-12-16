@@ -19,6 +19,8 @@ export const Volunteer: React.FC = () => {
     agreeToTerms: false
   });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   // Auto-fill user details if logged in
   useEffect(() => {
@@ -65,14 +67,37 @@ export const Volunteer: React.FC = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Add API call to submit volunteer registration
-    console.log('Volunteer registration:', formData);
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-    }, 5000);
+    setLoading(true);
+    setError(null);
+    
+    try {
+      // Store in localStorage as backup until API is ready
+      const volunteers = JSON.parse(localStorage.getItem('volunteer_registrations') || '[]');
+      volunteers.push({
+        ...formData,
+        submittedAt: new Date().toISOString()
+      });
+      localStorage.setItem('volunteer_registrations', JSON.stringify(volunteers));
+      
+      // TODO: Uncomment when API is ready
+      // const response = await fetch('/api/volunteers/register', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify(formData)
+      // });
+      // if (!response.ok) throw new Error('Registration failed');
+      
+      setSubmitted(true);
+      setTimeout(() => {
+        setSubmitted(false);
+      }, 5000);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to submit registration. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   const skillOptions = [
@@ -118,6 +143,13 @@ export const Volunteer: React.FC = () => {
         <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
           <p className="text-green-700 font-semibold">✓ Volunteer registration submitted successfully!</p>
           <p className="text-sm text-green-600 mt-1">We'll review your application and get back to you within 2-3 business days.</p>
+        </div>
+      )}
+
+      {error && (
+        <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+          <p className="text-red-700 font-semibold">✗ Error</p>
+          <p className="text-sm text-red-600 mt-1">{error}</p>
         </div>
       )}
 
@@ -367,10 +399,10 @@ export const Volunteer: React.FC = () => {
             <div className="flex flex-col sm:flex-row gap-4">
               <button
                 type="submit"
-                disabled={!formData.agreeToTerms}
+                disabled={!formData.agreeToTerms || loading}
                 className="px-8 py-3 bg-primary-700 text-white font-semibold rounded-lg hover:bg-primary-800 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Submit Application
+                {loading ? 'Submitting...' : 'Submit Application'}
               </button>
               <button
                 type="button"

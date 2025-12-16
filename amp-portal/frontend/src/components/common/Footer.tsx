@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { CONTACT_INFO, SOCIAL_MEDIA } from '../../config/constants';
 
 export const Footer: React.FC = () => (
   <footer className="bg-neutral-900 text-white mt-12">
@@ -7,7 +9,7 @@ export const Footer: React.FC = () => (
         <div>
           <h3 className="text-lg font-semibold mb-3">Association of Muslim Professionals</h3>
           <p className="text-sm text-neutral-300">We endeavour to provide the best possible services and support. If you get an opportunity or concern, send us an email or give us a call and we will respond as quickly as possible.</p>
-          <button className="mt-4 px-4 py-2 rounded bg-primary-700 text-white">Donate Now</button>
+          <Link to="/donate" className="inline-block mt-4 px-4 py-2 rounded bg-primary-700 text-white hover:bg-primary-800 transition-colors">Donate Now</Link>
         </div>
         <div>
           <h4 className="font-semibold mb-2">Links</h4>
@@ -34,8 +36,8 @@ export const Footer: React.FC = () => (
         <div>
           <h4 className="font-semibold mb-2">Contact</h4>
           <p className="text-neutral-300 text-sm">469B Umar Manzil, 5th Road, Khar (W),</p>
-          <p className="text-neutral-300 text-sm">info@ampindia.org</p>
-          <p className="text-neutral-300 text-sm">+91 7300116660</p>
+          <a href={`mailto:${CONTACT_INFO.email}`} className="block text-neutral-300 text-sm hover:text-white transition-colors">{CONTACT_INFO.email}</a>
+          <a href={`tel:${CONTACT_INFO.phone.replace(/[^0-9+]/g, '')}`} className="block text-neutral-300 text-sm hover:text-white transition-colors">{CONTACT_INFO.phone}</a>
         </div>
       </div>
       <div className="mt-12 border-t border-neutral-800 pt-6 text-neutral-400 text-xs flex flex-col sm:flex-row justify-between gap-4">
