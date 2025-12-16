@@ -4,16 +4,18 @@ import { useAuthStore } from '../../store/authStore';
 import { CONTACT_INFO, SOCIAL_MEDIA } from '../../config/constants';
 
 const TopBar: React.FC = () => (
-  <div className="bg-white text-neutral-800 border-b border-neutral-200">
-    <div className="max-w-7xl mx-auto px-4 py-3">
+  <div className="bg-cream-50 text-neutral-800 border-b border-neutral-200">
+    <div className="max-w-7xl mx-auto px-4 py-4">
       {/* Desktop Layout */}
       <div className="hidden lg:flex items-center justify-between">
         {/* Left: AMP logo + wordmark */}
-        <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-          <div className="w-10 h-10 rounded-full bg-primary-700 flex items-center justify-center text-white font-bold flex-shrink-0">A</div>
+        <Link to="/" className="flex items-center gap-3 hover:opacity-90 transition-opacity group">
+          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary-600 to-primary-700 flex items-center justify-center text-white font-bold flex-shrink-0 shadow-md group-hover:shadow-lg transition-shadow">
+            <span className="text-xl">A</span>
+          </div>
           <div className="leading-tight">
-            <div className="font-display font-black text-neutral-900 text-sm tracking-wide">ASSOCIATION OF MUSLIM PROFESSIONALS</div>
-            <div className="text-xs text-primary-700">STRIVING FOR PEACE AND PROGRESS</div>
+            <div className="font-display font-black text-neutral-900 text-base tracking-wide">ASSOCIATION OF MUSLIM PROFESSIONALS</div>
+            <div className="text-xs text-primary-600 font-semibold tracking-wider">STRIVING FOR PEACE AND PROGRESS</div>
           </div>
         </Link>
 
@@ -178,28 +180,28 @@ export const Header: React.FC = () => {
 
             {/* Right CTA buttons */}
             <div className="flex items-center gap-3">
-              <Link to="/donate" className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded bg-neutral-900 text-white">
-                <span>❤</span>
-                <span className="font-semibold">DONATE NOW</span>
+              <Link to="/donate" className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-all shadow-md hover:shadow-lg font-semibold">
+                <span className="text-lg">❤</span>
+                <span>DONATE NOW</span>
               </Link>
               {user ? (
                 <div className="hidden sm:flex items-center gap-2">
-                  <span className="text-white/90">{user.full_name}</span>
+                  <span className="text-white/90 font-medium">{user.full_name}</span>
                   <button
-                    className="px-3 py-1 rounded bg-primary-800 text-white"
+                    className="px-4 py-2 rounded-lg bg-primary-800 text-white hover:bg-primary-900 transition-colors font-medium"
                     onClick={() => navigate('/dashboard')}
                   >
                     Dashboard
                   </button>
                   <button
-                    className="px-3 py-1 rounded bg-white text-primary-700"
+                    className="px-4 py-2 rounded-lg bg-white text-primary-700 hover:bg-neutral-100 transition-colors font-medium"
                     onClick={() => logout()}
                   >
                     Logout
                   </button>
                 </div>
               ) : (
-                <Link to="/login" className="px-3 py-1 rounded bg-white text-primary-700">Login</Link>
+                <Link to="/login" className="px-4 py-2 rounded-lg bg-white text-primary-700 hover:bg-neutral-100 transition-colors font-medium">Login</Link>
               )}
 
               {/* Mobile menu toggle */}
@@ -226,7 +228,9 @@ export const Header: React.FC = () => {
             <Link to="/events" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded hover:bg-primary-800">Events</Link>
             <Link to="/resources" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded hover:bg-primary-800">Resource Center</Link>
             <Link to="/discussions" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded hover:bg-primary-800">Discussion Corner</Link>
-            <Link to="/donate" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 rounded bg-neutral-900 text-white mt-2">❤ DONATE NOW</Link>
+            <Link to="/donate" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-3 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors font-semibold shadow-md text-center mt-2">
+              <span className="text-lg mr-2">❤</span>DONATE NOW
+            </Link>
             {user ? (
               <>
                 <div className="border-t border-white/20 mt-2 pt-2">
